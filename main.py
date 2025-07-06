@@ -3,6 +3,7 @@ import pygame
 import os
 import time
 import random
+import sys  # 
 
 TILE_SIZE = 32
 SCREEN_WIDTH = 640
@@ -21,11 +22,17 @@ screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption("Endless Maze")
 clock = pygame.time.Clock()
 
-try:
-    current_dir = os.path.dirname(__file__)
-except NameError:
-    current_dir = os.path.dirname(os.path.abspath(__file__))
-assets_dir = os.path.join(current_dir, "assets")
+def resource_path(relative_path):
+    """ Retorna o caminho absoluto para o recurso, funciona para dev e para PyInstaller """
+    try:
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
+
+assets_dir = resource_path("assets")
+
 
 def load_image(path, scale=None):
     try:
@@ -242,7 +249,8 @@ while running:
                 setup_level(level)
 
     if game_active:
-        all_sprites.update(walls)
+        player.update(walls)
+        enemies.update(walls)
         camera.update(player)
         
         elapsed_time = time.time() - start_time
@@ -274,7 +282,11 @@ while running:
             screen.blit(floor_img, camera.apply(pygame.Rect(c * TILE_SIZE, r * TILE_SIZE, TILE_SIZE, TILE_SIZE)))
 
     for sprite in all_sprites:
-        screen.blit(sprite.image, camera.apply(sprite.rect))
+        if not isinstance(sprite, Wall):
+             screen.blit(sprite.image, camera.apply(sprite.rect))
+
+    for wall in walls:
+        screen.blit(wall.image, camera.apply(wall.rect))
 
     hud_panel = pygame.Surface((SCREEN_WIDTH, hud_height))
     hud_panel.fill(COLOR_BLACK)
