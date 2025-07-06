@@ -72,7 +72,7 @@ Contribuições são sempre bem-vindas! Se você tiver ideias para novas funcion
 4.  Fazer o **Push** para a Branch (`git push origin feature/sua-feature`).
 5.  Abrir um **Pull Request**.
 
-Você também pode simplesmente abrir uma [Issue](https://github.com/seu-usuario/seu-repositorio/issues) com a tag "bug" ou "enhancement".
+Você também pode simplesmente abrir uma [Issue](https://github.com/Luiz-eduardp/endlessmaze/issues) com a tag "bug" ou "enhancement".
 
 ---
 
