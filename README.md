@@ -1,6 +1,6 @@
 # Endless Maze - Um Jogo de Labirinto Retrô
 
-![Gameplay do Endless Maze](/maze_game/assets/image.png)
+![Gameplay do Endless Maze](/assets/image.png)
 
 **Endless Maze** é um jogo 2D desafiador onde o objetivo é navegar por labirintos gerados processualmente antes que o tempo acabe. A cada nível, os labirintos se tornam maiores, o tempo fica mais curto e mais inimigos aparecem no seu caminho. Com uma estética nostálgica inspirada no Game Boy, o jogo oferece um desafio simples, viciante e infinito.
 
